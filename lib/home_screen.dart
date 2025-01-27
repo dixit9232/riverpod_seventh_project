@@ -12,13 +12,11 @@ class HomeScreen extends ConsumerWidget {
         child: Consumer(
           builder: (context, ref, child) {
             final future = ref.watch(futureProvider);
-            // skipLoadingOnRefresh => for loading on refresh 
-            return future.when
-            (skipLoadingOnRefresh: false,data: (data) => Text(data.toString()), error: (error, stack) => Text(error.toString()), loading: () => CircularProgressIndicator());
+            // skipLoadingOnRefresh => for loading on refresh
+            return future.when(skipLoadingOnRefresh: false, data: (data) => Text(data.toString()), error: (error, stack) => Text(error.toString()), loading: () => CircularProgressIndicator());
           },
         ),
       ),
-      
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           ref.invalidate(futureProvider);
